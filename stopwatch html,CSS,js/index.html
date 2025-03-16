@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="waktu">
+            <span class="jam">00</span>
+            <span class="titik">:</span>
+            <span class="menit">00</span>
+
+            <span class="titik">:</span>
+            <span class="detik">00</span>
+
+            <span class="titik dua">:</span>
+            <span class="milidetik">00</span>
+
+        </div> 
+        <div class="tombol">
+            <button class="Mulai-hitung">Mulai hitung</button>
+            <button class="Stop-hitung">Stop hitung</button>
+            <button class="Reset-hitungan">Reset hitungan</button>
+        </div>
+    </div>
+
+    <script>
+        let jm = menit = detik = md = "00", starttime;
+
+        // Memperbaiki pemilihan elemen dengan addEventListener
+        const startbtn = document.querySelector(".Mulai-hitung"),
+              stopbtn = document.querySelector(".Stop-hitung"),
+              resetbtn = document.querySelector(".Reset-hitungan");
+
+        // Menambahkan event listener dengan benar
+        startbtn.addEventListener("click", MulaiHitung);
+        stopbtn.addEventListener("click", StopHitung);
+        resetbtn.addEventListener("click", ResetHitungan);
+
+        // Fungsi untuk memulai stopwatch
+        function MulaiHitung() {
+            startbtn.classList.add("active");
+            stopbtn.classList.remove("active");
+
+            starttime = setInterval(() => {
+                md++;
+                md = md < 10 ? "0" + md : md;
+
+                if (md == 100) {
+                    detik++;
+                    detik = detik < 10 ? "0" + detik : detik;
+                    md = "00";
+                }
+                if (detik == 60) {
+                    menit++;
+                    menit = menit < 10 ? "0" + menit : menit;
+                    detik = "00";
+                }
+                if (menit == 60) {
+                    jm++;
+                    jm = jm < 10 ? "0" + jm : jm;
+                    menit = "00";
+                }
+                updateDisplay();
+            }, 10);
+        }
+
+        // Fungsi untuk menghentikan stopwatch
+        function StopHitung() {
+            startbtn.classList.remove("active");
+            stopbtn.classList.add("active");
+            clearInterval(starttime);
+        }
+
+        // Fungsi untuk mereset stopwatch
+        function ResetHitungan() {
+            startbtn.classList.remove("active");
+            stopbtn.classList.remove("active");
+            clearInterval(starttime);
+            jm = menit = detik = md = "00";
+            updateDisplay();
+        }
+
+        // Fungsi untuk memperbarui tampilan
+        function updateDisplay() {
+            document.querySelector(".milidetik").innerText = md;
+            document.querySelector(".detik").innerText = detik;
+            document.querySelector(".menit").innerText = menit;
+            document.querySelector(".jam").innerText = jm;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #1abc9c;
+}
+
+.wrapper {
+    user-select: none;
+    text-align: center; /* Menambahkan untuk memastikan semua elemen berada di tengah */
+}
+
+.wrapper .waktu {
+    height: 95px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    box-shadow: 15px 15px 20px rgb(0, 0, 0, 0.09);
+    padding: 0 17px;
+    margin-bottom: 30px; /* Jarak antara waktu dan tombol */
+}
+
+.wrapper .waktu span {
+    width: 100px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+    color: #333;
+}
+
+.waktu span.titik {
+    width: 2px;
+}
+
+.waktu span.dua,
+.waktu .milidetik {
+    color: blue;
+}
+
+.waktu .tombol {
+    display: flex; /* Menggunakan flexbox untuk tombol */
+    justify-content: center; /* Menyusun tombol agar berada di tengah */
+    gap: 20px; /* Memberikan jarak antar tombol */
+}
+
+.tombol button {
+    padding: 10px 30px;
+    outline: none;
+    border: none;
+    margin: 0 6px;
+    color: green;
+    background: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 15px 15px 20px rgb(0, 0, 0, 0.09);
+    transition: all 0.3s ease; /* Menambahkan efek transisi */
+}
+
+.tombol button.active,
+.tombol button.stpactive {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.tombol button:hover {
+    background-color: #f0f0f0; /* Efek hover untuk tombol */
+}
